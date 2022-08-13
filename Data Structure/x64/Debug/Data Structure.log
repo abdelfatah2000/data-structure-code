@@ -1,0 +1,3 @@
+﻿  Data Structure.cpp
+C:\Users\Dell\source\repos\Data Structure\Data Structure\Array.h(77,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Data Structure.vcxproj -> C:\Users\Dell\source\repos\Data Structure\x64\Debug\Data Structure.exe

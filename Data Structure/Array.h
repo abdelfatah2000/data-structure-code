@@ -12,7 +12,6 @@ class Array
 		delete[] arr;
 		arr = temp;
 		capacity = newCapacity;
-		temp = NULL;
 	}
 public:
 	Array() {
@@ -43,8 +42,16 @@ public:
 		if (current == capacity) {
 			resize(2*capacity);
 		}
-		arr[current] = value;
-		current++;
+		/*arr[current] = value;
+		current++;*/
+
+		// push item in sorted array
+		int i = current - 1;
+		while (arr[i] > value) {
+			arr[i + 1] = arr[i];
+			i--;
+		}
+		arr[i+1] = value;
 	}
 	void Inset(int i, int value) {
 		if (current == capacity) {
@@ -101,11 +108,67 @@ public:
 		*first = *second;
 		*second = temp;
 	}
-	int Find(int value) {
+	int linearSearch(int value) {
 		for (int i = 0; i < current; i++) {
-			if (arr[i] == value) { return i; }
+			if (arr[i] == value) {
+				// Transposition
+				Swap(&arr[i], &arr[i - 1]);
+				return i - 1;
+
+				// Move to Front
+				/*Swap(&arr[i], &arr[0]);
+				return 0;*/
+			}
 		}
 		return -1;
+	}
+	int binearySearch(int start, int end, int value) {
+		if (start <= end) {
+			int mid = ceil((start + end) / 2);
+			if (value == arr[mid])	return mid;
+			if (value > arr[mid]) binearySearch(mid + 1, end, value);
+			else binearySearch(start, mid - 1, value);
+		}
+		else return -1;
+	}
+	int Max() {
+		int max = arr[0];
+		for (int i = 0; i < current; i++) {
+			if (max < arr[i]) max = arr[i];
+		}
+		return max;
+	}
+	int Min() {
+		int min = arr[0];
+		for (int i = 0; i < current; i++) {
+			if (min > arr[i]) min = arr[i];
+		}
+		return min;
+	}
+	void Reverse() {
+
+		/*int* tempArr = new int[current];
+		for (int i = current - 1; i > 0; i--) {
+			tempArr[i] = arr[current - i - 1];
+		}
+		for (int i = 0; i < current; i++) {
+			arr[i] = tempArr[i];
+		}
+		delete[] tempArr;*/
+
+		for (int i = 0; i < current; i++) {
+			int temp = arr[i];
+			arr[i] = arr[current - i - 1];
+			arr[current - i - 1] = temp;
+		}
+	}
+	bool isSorted() {
+		for (int i = 0; i < current - 1; i++) {
+			if (arr[i] > arr[i + 1]) {
+				return false;
+			}
+			return true;
+		}
 	}
 };
 

@@ -1,3 +1,6 @@
 ﻿  Data Structure.cpp
-C:\Users\Dell\source\repos\Data Structure\Data Structure\Array.h(77,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Dell\source\repos\Data Structure\Data Structure\Array.h(87,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Dell\source\repos\Data Structure\Data Structure\Array.h(127,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Recursion.cpp
+  Generating Code...
   Data Structure.vcxproj -> C:\Users\Dell\source\repos\Data Structure\x64\Debug\Data Structure.exe

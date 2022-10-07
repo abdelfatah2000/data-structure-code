@@ -50,5 +50,48 @@ public:
 			funA(n / 2);
 		}
 	}
+
+	int Sum(int n) {
+		if (n == 0) return 0;
+		return Sum(n - 1) + n;
+	}
+	/*int Sum(int n) {
+		return (n * (n - 1)) / 2;
+		Time ---> O(1)
+	}*/
+
+	int Fact(int n) {
+		if (n <= 1) return 1;
+		return Fact(n - 1) * n;
+	}
+
+	/*int Pow(int m, int n) {
+		if (n == 0) return 1;
+		return Pow(m, n - 1) * m;
+	}*/
+	int Pow(int m, int n) {
+		if (n == 0) return 1;
+		if (n % 2 == 0) return Pow(m * m, n/2);
+		return m * Pow(m * m, (n - 1) / 2);
+	}
+	// Taylor Series
+	//float e(int m, int n) {
+	//	static float p = 1, f = 1;
+	//	float x;
+	//	if (n == 0) return 1;
+	//	x = e(m, n - 1);
+	//	p = p * m;
+	//	f = f * n;
+	//	return x + (p / f);
+	//	// O(N^2)
+	//}
+
+	// Taylor Series with Horner's Rule
+	float e(float x, float n) {
+		static float s = 1;
+		if (n == 0) return s;
+		s = 1 + (x / n) * s;
+		return e(x, n - 1);
+	}
 };
 

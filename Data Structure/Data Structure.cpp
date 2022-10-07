@@ -5,7 +5,5 @@
 int main()
 {
 	Recursion rec;
-	rec.funA(20);
+	std::cout << rec.e(2, 3);
 }
-
-
